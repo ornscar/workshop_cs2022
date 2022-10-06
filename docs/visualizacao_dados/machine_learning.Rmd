@@ -1,0 +1,1110 @@
+---
+title: "Machine Learning"
+subtitle: "Workshop de Ciência de Dados"  
+author: "Elias Rosa e Samuel Medeiros"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+class: inverse, center, middle
+
+background-image: url(img/logo.png)
+background-position: 50% 15%
+background-size: 30%
+
+# <br><br> Machine Learning
+
+### Workshop Ciência de Dados 
+### OOBr + Constat
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#0A1E3C",
+  code_highlight_color = "#00FFFF",
+  text_bold_color = "#32A0FF",
+  link_color = "#FAC80F",
+  text_font_google = google_font("Lato", "300", "300i"),
+  header_font_google = google_font("Ubuntu")
+)
+library(ggplot2)
+library(magrittr)
+library(knitr)
+library(tidyverse)
+library(ISLR)
+library(kableExtra)
+library(rpart)
+library(dplyr)
+adv <- read_csv("static/data/Advertising.csv") %>%
+  rename(vendas = sales)
+```
+
+### Sobre nós
+.pull-left[
+<img src=img/perfil.png width="330">
+<br><br><br>Contato:
+`r fontawesome::fa("envelope", fill = "#0A1E3C")` <a href="mailto:elias.junior_@outlook.com">elias.junior_@outlook.com</a>
+`r fontawesome::fa("github", fill = "#0A1E3C")` <a href="http://github.com/eliasrribeiro">@eliasrribeiro</a>
+]
+
+.pull-right[
+<img src=img/perfil2.png width="330">
+<br><br><br>Contato:
+
+`r fontawesome::fa("envelope", fill = "#0A1E3C")` <a href="mailto:samuel.martins7@hotmail.com">samuel.martins7@hotmail.com</a>
+
+`r fontawesome::fa("github", fill = "#0A1E3C")` <a href="http://github.com/SammyMar">@SammyMar</a>
+
+
+]
+
+---
+class: middle
+
+### Sobre o OOBr
+
+.pull-left[
+- Plataforma interativa de **monitoramento**, **análises de dados públicos** (da saúde, socioeconômicos e ambientais) cientificamente embasadas e **disseminação de informações** relevantes na área da saúde materno-infantil. 
+
+- Ser referência de informações acessíveis e confiáveis sobre saúde materno-infantil e ser um suporte importante para a tomada de decisões na área.
+
+- Equipe multidisciplinar da UFES, USP e FACENS.
+
+- Financiado pela Fundação Bill & Melinda Gates, CNPq e FAPES.
+]
+
+.pull-right[
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("img/logo2.png")
+```
+]
+
+---
+class: middle
+
+.pull-left[
+### Painéis OOBr
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("img/paineis.png")
+```
+]
+
+.pull-right[
+### Livro e tutoriais OOBr
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("img/tutoriais.png")
+```
+]
+
+.center[
+#### `r fontawesome::fa("link", fill = "#0A1E3C")` [https://observatorioobstetricobr.org](https://observatorioobstetricobr.org)
+]
+class: inverse, middle
+
+### Materiais de Referência
+
+***adicionar no final***
+
+---
+class: inverse, middle
+
+## Machine Learning
+
+---
+class: middle
+
+### Ciência de Dados
+
+```{r echo=FALSE, fig.align='center', out.width = "60%"}
+knitr::include_graphics("img/Unicórnios-em-Data-Science (FONTE Ricardo Cappra e Gabriel Lages).png")
+```
+
+Fonte : Ricardo Cappa e Gabriel Lages
+
+---
+class: middle
+
+```{r echo=FALSE, fig.align='center', out.width = "70%"}
+knitr::include_graphics("img/cliclo_dados.png")
+```
+
+Fonte : Ciência de Dados na Educação Pública
+
+---
+class: middle
+
+### O que é Machine Learning ?
+
+- Criado em 1959, por Arthur Samuel
+
+- Aprendizado de Máquina
+
+- Conjunto de técnicas e estratégias para análise de dados que visa gerar estimativas mais precisas para uma quantidade ou fenômeno (Max Kuhn, 2014)
+
+---
+class: middle
+
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/machinelearning.png")
+```
+
+Fonte : Ironhack Blog
+---
+
+class: middle
+
+### Exemplos de aplicação
+
+- Streamings (Netflix, Spotify, etc)
+
+- Bancos (Fraude, Crédito, etc)
+
+- Diagnóstico por pixels em uma imagem
+
+- Carro autônomo
+
+- Pesquisas 
+
+---
+class: inverse, middle
+
+### Aprendizado Não Supervisionado vs Aprendizado Supervisionado
+
+### Aprendizado Não Supervisionado
+
+*** Samuel
+---
+class: inverse,middle
+
+## Aprendizado Supervisionado
+
+---
+class: middle
+.pull-left[
+
+### Regressão
+
+- Quantidade de Vendas
+- Porcentagem 
+- Preço
+- Peso
+
+]
+.pul-right[
+
+### Classificação
+
+- Bom pagador/não é bom pagador
+- Diagnóstico de alguma doença/sem doença
+- Pixels em imagem é cancerígeno/não é cancerígeno
+- Sentimento bom/sentimento ruim
+
+]
+
+---
+class: middle
+### Aprendizado Supervisionado
+
+Em tese, queremos encontrar uma função $f()$ de forma que $y\approx f(x)$. Exemplos :
+
+- ___Exemplo 1___: Queremos prever a quantidade de vendas de um produto X baseado em qual midia ele foi divulgado e qual foi o investimento sobre o mesmo.
+
+- ___Exemplo 2___: Queremos classificar se uma pessoa vai ou não atrasar uma parcela baseado no tipo de contrato que ela fez e o valor da parcela do financiamento.
+
+Nos exemplos:
+
+$vendas = f(midia, investimento)$
+
+$inadimplência = f(valor da parcela, tipo de contrato)$
+
+Fonte: Exemplos obtidos no material do Curso-R.
+
+---
+class: middle
+
+### Definições
+- $X_1$, $X_2$, ..., $X_p$: variáveis explicativas (ou preditores).
+- $Y$: variável resposta. 
+- $Ŷ$: valor esperado (ou predição). 
+- $f(X)$ também é conhecida também como "Modelo".
+
+No ___Exemplo 1___:
+- $X_1$: `midia` - indicadador de se a propaganda é para jornal, rádio, ou TV.
+- $X_2$: `investimento` - valor do orçamento
+- $Y$: `vendas` - qtd vendida
+- $Y$ - $Ŷ$ é o resíduo (ou erro)
+
+No ___Exemplo 2___:
+- $X_1$: `tipo_de_contrato` - flags de se o contrato é padrao, price, ou revol.
+- $X_2$: `valor_da_parcela` - Valor da parcela do financiamento.
+- $Y$: `atrasou` - indicador de atraso maior que 30 dias na parcela.
+- $log(Ŷ)$ ou $log(1-Ŷ)$ é o resíduo (ou erro)
+
+---
+class: middle
+
+### Exemplo 1 
+
+- Regressão Linear
+
+- Modelo de regressão linear $f(x) = \beta_0 + \beta_1 x_1 + \beta_2x_2$
+
+```{r, fig.width = 12, fig.height = 5}
+adv_ok <- adv %>% 
+  gather(midia, investimento, -vendas)
+
+arvore <- rpart::rpart(vendas ~ investimento + midia, data = adv_ok)
+regressao_linear <- lm(vendas ~ investimento + midia, data = adv_ok)
+adv_ok <- adv_ok %>%
+  mutate(
+    arvore = predict(arvore, newdata = .),
+    regressao_linear = predict(regressao_linear, newdata = .),
+  )
+grafico_sem_curva <- adv_ok %>% 
+  ggplot(aes(x = investimento, y = vendas)) + 
+  geom_point() +
+  facet_wrap(~midia, scales = "free") +
+  labs(colour = "f(x):") +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 22),
+        legend.title = element_text(size = 30))
+
+grafico_curva_arvore <- grafico_sem_curva +
+  geom_line(aes(y = arvore, colour = "Árvore de Decisão"), size = 2)
+```
+
+```{r, fig.width = 12, fig.height = 5}
+grafico_curva_regressao_linear <- grafico_sem_curva + 
+  geom_step(aes(y = regressao_linear, colour = "Regressão Linear"), size = 2)
+grafico_curva_regressao_linear
+```
+
+---
+class: middle
+### Exemplo 1 
+
+- Árvores de decisão
+
+```{r, fig.width = 12, fig.height = 5}
+grafico_curva_arvore 
+```
+
+---
+class:middle
+
+### Tabela depois das predições
+
+```{r}
+library(kableExtra)
+set.seed(1)
+adv_ok %>%
+  sample_n(8) %>%
+  mutate_if(is.numeric, round, digits = 1) %>%
+  select(midia, investimento, everything()) %>%
+  kable(format = "html") %>%
+  column_spec(4:5, color = "purple", bold = TRUE)
+```
+
+---
+class: middle
+### Exemplo 2 
+
+- Regressão Logística
+
+- Modelo de Regressão Logística $log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1x_1 + \beta_2x_2$
+
+```{r, fig.width = 12, fig.height = 5}
+set.seed(69)
+inadimplencia <- tibble::tibble(
+  tipo_de_contrato = rep(c("revol", "padrao", "price"), each = 1000),
+  valor_da_parcela = round(runif(3000, min = 500, max = 3000), digits = 0),
+  atrasou = rbinom(3000, 1, prob = 1/(1 + exp(-1*(
+    -9 + 
+      1.5 * (tipo_de_contrato == "revol") + 
+      -1.5 * (tipo_de_contrato == "padrao") + 
+      0.005 * (valor_da_parcela) + 
+      1 * (valor_da_parcela > 1500)
+    ))))
+)
+
+arvore_inad <- rpart::rpart(atrasou ~ valor_da_parcela + tipo_de_contrato, control = rpart::rpart.control(cp = 0.005), data = inadimplencia)
+regressao_linear_inad <- glm(atrasou ~ valor_da_parcela * tipo_de_contrato, data = inadimplencia, family = "binomial")
+inadimplencia <- inadimplencia %>%
+  dplyr::mutate(
+    arvore = predict(arvore_inad, newdata = .),
+    regressao_logistica = predict(regressao_linear_inad, newdata = ., type = "response"),
+  )
+grafico_sem_curva_inad <- inadimplencia %>% 
+  ggplot(aes(x = valor_da_parcela, y = atrasou)) + 
+  geom_point() +
+  facet_wrap(~tipo_de_contrato, scales = "free") +
+  labs(colour = "f(x):") +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 22),
+        legend.title = element_text(size = 30))
+
+grafico_curva_arvore_inad <- grafico_sem_curva_inad +
+  geom_line(aes(y = arvore, colour = "Árvore de Decisão"), size = 2)
+```
+
+```{r, fig.width = 12, fig.height = 5}
+grafico_curva_regressao_linear_inad <- grafico_sem_curva_inad + 
+  geom_step(aes(y = regressao_logistica, colour = "Regressão Logística"), size = 2)
+grafico_curva_regressao_linear_inad
+```
+
+---
+class: middle
+### Exemplo 2 
+
+- Árvores de decisão
+
+```{r, fig.width = 12, fig.height = 5}
+grafico_curva_arvore_inad
+```
+
+---
+class: middle
+
+### Tabela depois das predições
+
+```{r}
+set.seed(1)
+inadimplencia %>%
+  dplyr::sample_n(8) %>%
+  dplyr::mutate_if(is.numeric, round, digits = 2) %>%
+  dplyr::select(tipo_de_contrato, valor_da_parcela, everything()) %>%
+  kable(format = "html") %>%
+  column_spec(4:5, color = "purple", bold = TRUE)
+```
+---
+class: middle
+### Desempenho vs Interpretabilidade 
+
+```{r, fig.width=11, fig.height=7, out.width=600}
+library(ggrepel)
+set.seed(1)
+tribble(
+  ~modelo, ~`Desempenho`, ~Interpretabilidade,
+  "Regressão Linear", 0, 3,
+  "Regressão Logística", 0, 3, 
+  "Árvore de Decisão", 1, 2.2,
+  "Generalized Additive Models", 1.5, 1.5,
+  "Redes Neurais, Deep Learning", 3, 1,
+  "Bagging, Boosting", 3.2, 0.8,
+  "SVM", 2.6, 0.5
+) %>%
+  ggplot(aes(x = `Desempenho`, y = Interpretabilidade)) +
+  geom_text_repel(aes(label = modelo), size = 7) +
+  theme_minimal(24) +
+  scale_x_continuous(breaks = c(0, 3.2), labels = c("Baixo", "Alto")) +
+  scale_y_continuous(breaks = c(0, 3.5), labels = c("Baixo", "Alto"))
+```
+---
+class: inverse,middle
+
+## Conceitos
+
+---
+class: middle
+
+### Treino e Teste
+
+```{r echo=FALSE, fig.align='center', out.width = "40%"}
+knitr::include_graphics("img/treino-teste.webp")
+```
+
+- Overfitting
+
+Fonte da imagem: MAp
+---
+class: middle
+
+### Overfitting (Sobreajuste)
+
+- Regressão Polinomial com aumento do polinômio
+
+$$f(x)=\beta_0+\beta_1x_i+\beta_2x_i^2+\cdots+\beta_9x_i^9 $$
+
+![scatter_eqm](static/img/overfiting_scatter_eqm.gif)
+---
+class: middle
+
+### Hiperparâmetros
+
+- Hiperparâmetros são parâmetros de modelos que devem ser definidos antes de treinar o modelo. 
+
+- Usados para controlar o processo de aprendizado.
+
+- Exemplos : **Random Forest**, **Redes Neurais**, **XGBoost**.
+
+- __Grid Search__ é uma técnica usada para testar todas as combinações possíveis de hiperparâmetros. 
+
+---
+class: middle
+
+### Cross-validation (Validação Cruzada)
+
+- Objetivo: encontrar o melhor conjunto de hiperparâmetros.
+
+```{r echo=FALSE, fig.align='center', out.width = "70%"}
+knitr::include_graphics("img/cross.png")
+```
+
+Fonte: ebc.cat
+---
+class: middle
+
+.pull-left[
+
+### Validação por tempo
+
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/cross_series.jpg")
+```
+
+- __modeltime.resample__
+]
+.pull-right[
+
+### Validação por espaço
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/cross_space.gif")
+```
+
+- __spacialsample__
+]
+---
+class: middle
+
+### Pré-processamento dos dados
+
+- Transformações não lineares nas variáveis preditoras (log, raiz quadrada, BoxCox)
+
+- Tranformação em variáveis Dummy (para variáveis categóricas)
+
+- Reamostragens 
+
+- Interações entre variáveis
+
+- Normalização em variáveis numéricas
+
+---
+class: middle
+
+### Matriz de confusão
+
+```{r echo=FALSE, fig.align='center', out.width = "70%"}
+library(kableExtra)
+tribble(
+  ~Predito, ~`Negativo     `, ~`Positivo `,
+  "Negativo",    "Verdadeiro Negativo (TN)", "Falso Negativo (FN)",
+  "Positivo",    "Falso Positivo (FP)", "Verdadeiro Positivo (TP)"
+) %>%
+  kable() %>%
+  kable_styling(c("bordered", "basic"), full_width = FALSE, font_size = 20) %>%
+  add_header_above(c(" " = 1, "Observado" = 2), background = "white") %>%
+  collapse_rows(columns = 1, valign = "top") %>%
+  kableExtra::row_spec(0:2, background = "white", align = "center") %>%
+  kableExtra::column_spec(1, "3in", bold = TRUE) %>%
+  kableExtra::column_spec(2, "3in") %>%
+  kableExtra::column_spec(3, "2in")
+```
+### Medidas de desempenho
+
+$$
+\begin{array}{lcc}
+\mbox{acurácia}  & = & \frac{TP + TN}{TP + TN + FP + FN}\\\\
+\mbox{precisão} & = & \frac{TP}{TP + FP}\\\\
+\mbox{sensibilidade} &=& \frac{TP}{TP + FN}\\\\
+\mbox{especificidade} &=& \frac{TN}{TN + FP}\\\\
+\end{array}
+$$
+---
+class: middle
+
+### Curva ROC e AUC
+
+.pull-left[
+
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/CurvaROC.png")
+```
+
+]
+
+.pull-right[
+
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/ROC.png")
+```
+
+]
+---
+class: inverse,middle
+
+### Árvores de Decisão
+
+---
+class: middle
+
+### Árvores de Decisão
+
+```{r echo=FALSE, fig.align='center', out.width = "90%"}
+knitr::include_graphics("img/arvores.png")
+```
+
+---
+class: middle
+
+### Ganho de Informação (information gain)
+
+$$
+\mbox{GI} = N . Imp(nó) - N(esq) . Imp(esq) - N(dir) . Imp(dir)
+$$
+
+### Medidas de Impureza mais comuns
+
+.center[
+<img src="static/img/impurezas.png" style="width: 83%;"/>
+]
+
+Fonte: Material Curso-R
+
+---
+class: middle
+
+### Exemplo usando o GINI
+
+.center[
+<img src="static/img/gini_exemplo.png" style="width: 100%;"/>
+]
+
+Fonte: Material Curso-R
+---
+class: middle
+
+### Hiperparâmetros
+
+- Quantidade mínima de observações dentro de um nó.
+
+- __Profundidade__
+
+- Parâmetro mínimo de complexidade (ganho de informação)
+
+---
+class: inverse, middle
+
+### XGBoost
+
+---
+class: middle
+
+### XGBoost (Extreme Gradient Boosting)
+
+- Generalização do Gradient Bosting
+
+- Combinação de várias árvores de decisão construídas sequencialmente usando a informação da árvora passada.
+
+- Utiliza o algoritimo de descida de gradiente minimizando a função perda da árvore anterior.
+
+- Poderoso computacionalmente.
+
+---
+class: middle
+
+### Hiperparâmetros
+
+- Quantidade mínima de observações dentro de um nó.
+
+- __Profundidade__
+
+- Quantidade de variáveis sorteadas por árvore
+
+- Número de árvores
+
+- __Tamanho do passo__
+
+- __Parâmetro Regularizador__
+
+- Proporção de linhas para sorter por árvore
+
+---
+class: middle
+
+### XGBoost
+
+<img src="static/img/xgboost_tuned_vs_untuned.gif" style="width: 100%;"/>
+
+Fonte: Material Curso-R
+---
+class: inverse, middle
+
+### Aplicação modelo XGBoost
+
+---
+class: middle
+
+### Predição de casos de COVID-19 em gestantes e puérperas
+
+- SIVEP-Gripe
+
+- Casos COVID-19 vs Não COVID-19.
+
+- Classificar casos "não especificados".
+
+- Dados filtrados e tratados.
+
+- Análises estatísticas para decisão das variáveis junto com a Obstetrícia.
+
+- __{TIDYMODELS}__
+
+---
+class: middle
+
+No `r fontawesome::fa("r-project", fill = "#0A1E3C")`
+
+```{r,echo=TRUE}
+library(tidymodels)
+
+data <- readRDS("data.rds")
+
+table(data$classi_fin)
+```
+
+---
+class: middle
+
+### Bases treino e teste
+
+```{r,echo=TRUE}
+set.seed(123)
+
+srag_split <- initial_split(
+  data, 
+  prob = 0.7
+)
+
+srag_train <- training(srag_split)
+
+srag_test <- testing(srag_split)
+```
+
+---
+class: middle
+
+### Pré-Processamento
+
+```{r,echo=TRUE}
+#Recipes
+
+xgb_rec <- recipe(classi_fin ~ ., data = srag_train) %>% 
+  step_normalize(idade) %>%
+  themis::step_smotenc(classi_fin,seed = 69) %>% 
+  step_dummy(all_nominal(), -classi_fin)  
+```
+
+- Varios tipos de step - transformações (BoxCox,polinomial,raiz quadrada), inputação pela média, reamostragens, nivelar classes de uma variável, categorizar faltantes (NA) etc..
+
+---
+class: middle
+
+### Pré-Processamento
+
+```{css, echo=FALSE}
+.scroll-100 {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: inherit;
+}
+```
+
+```{r,echo=TRUE, class.output="scroll-100"}
+#Recipes
+
+xgb_rec_data <- recipe(classi_fin ~ ., data = srag_train) %>% 
+  step_normalize(idade) %>%
+  themis::step_smotenc(classi_fin,seed = 69) %>% 
+  step_dummy(all_nominal(), -classi_fin)  %>% 
+  prep() %>% 
+  bake(new_data=NULL)
+
+table(xgb_rec_data$classi_fin)
+```
+
+---
+class: middle
+
+### Especificação
+
+```{r,echo=TRUE}
+xgb_spec <- boost_tree(
+  trees = 1000,
+  tree_depth = tune(), 
+  min_n = tune(), 
+  loss_reduction = tune(),                     
+  sample_size = tune(), 
+  mtry = tune(),         
+  learn_rate = tune(),                         
+) %>% 
+  set_engine("xgboost") %>% 
+  set_mode("classification")
+```
+
+---
+class: middle
+
+### Workflow
+
+```{r,echo=TRUE}
+xgb_wf <- workflow() %>%
+  add_recipe(xgb_rec) %>%
+  add_model(xgb_spec)
+```
+
+---
+class: middle
+
+.pull-left[
+
+### Grid
+
+```{r,echo=TRUE}
+xgb_grid <- grid_max_entropy(
+  tree_depth(),
+  min_n(),
+  loss_reduction(),
+  sample_size = sample_prop(),
+  finalize(mtry(), srag_train),
+  learn_rate(),
+  size = 30
+)
+```
+
+- __grip_expand__ : você limita o espaço
+]
+
+.pull-right[
+
+### Cross-Validation
+```{r,echo=TRUE}
+set.seed(456)
+
+srag_folds <- vfold_cv(
+  srag_train, 
+  v = 10,
+  repeats = 5
+)  
+```
+
+]
+
+
+---
+class: middle
+
+### Tunning 
+
+```{r, echo=TRUE, eval=FALSE}
+xgb_metrics <- metric_set(roc_auc, sensitivity, specificity, npv, ppv)
+
+doParallel::registerDoParallel()
+
+set.seed(1011)
+
+xgb_res <- 
+  xgb_wf %>% 
+  tune_grid(
+    resamples = srag_folds,
+    grid = xgb_grid,
+    metrics = xgb_metrics,
+    control = control_grid(save_pred = TRUE)
+  )
+```
+
+```{r,warning=FALSE}
+xgb_res <- readRDS("tunning_smotenc_ML.rds")
+```
+
+---
+class: middle
+
+```{css, echo=FALSE}
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 100px;
+}
+```
+
+### Melhores Hiperparâmetros
+
+```{r,echo=TRUE}
+# metrics
+
+collect_metrics(xgb_res)
+```
+
+
+---
+class: middle
+
+### Melhores Hiperparâmetros
+
+```{r,echo=TRUE}
+# best hyperparameters
+
+show_best(xgb_res, "roc_auc")
+
+```
+
+---
+class: middle
+
+### Melhores Hiperparâmetros
+
+```{r,echo=TRUE}
+# best auc
+
+best_auc <- select_best(xgb_res, "roc_auc"); best_auc  
+```
+
+---
+class: middle
+
+### Finalização do Modelo
+
+```{r,echo=TRUE}
+# Best model --------------
+
+final_xgb <- finalize_workflow(
+  xgb_wf,
+  best_auc
+)
+
+# Final fit model ---------
+
+final_fit <- last_fit(
+  final_xgb, 
+  srag_split,
+)
+
+collect_metrics(final_fit)
+```
+
+---
+class: middle
+
+### Gráfico importância das variáveis 
+
+```{r,echo=TRUE,warning=FALSE,message=FALSE}
+library(vip)
+### Gráfico de pontos
+final_xgb %>%
+  fit(data = srag_train) %>%
+  pull_workflow_fit() %>%
+  vip(geom = "point")
+```
+]
+
+---
+class: middle
+
+### Gráfico importância das variáveis
+
+
+```{r,echo=TRUE,warning=FALSE,message=FALSE}
+final_fit %>%  
+  pluck(".workflow",1) %>% 
+  pull_workflow_fit() %>% 
+  vip::vip(num_features=20)
+```
+
+
+
+---
+class: middle
+
+### Curva ROc
+
+
+```{r, echo=TRUE, warning=FALSE,message=FALSE, out.width = "160%"}
+final_fit %>% 
+  collect_predictions() %>% 
+  roc_curve(classi_fin,`.pred_covid-19`) %>% 
+  autoplot()
+```
+
+
+---
+class: middle
+
+### Matriz de confusão
+
+```{r,echo=TRUE,out.height="120%"}
+conf_mat(
+  data = final_fit$.predictions[[1]],
+  truth = classi_fin,
+  estimate = .pred_class
+) %>% 
+  autoplot(type = "heatmap")
+```
+---
+
+class: middle
+
+### Medidas de desempenho
+
+.pull-left[
+```{r,echo=TRUE,eval=FALSE}
+library(gt)
+preds <- final_fit %>% 
+  collect_predictions() 
+
+summary(conf_mat(preds, classi_fin, .pred_class)) %>%
+  dplyr::select(-.estimator) %>%
+  gt() %>% 
+  fmt_number(columns = 2, decimals = 4)
+```
+]
+.pull-right[
+```{r,out.height="200%"}
+library(gt)
+preds <- final_fit %>% 
+  collect_predictions() 
+
+summary(conf_mat(preds, classi_fin, .pred_class)) %>%
+  dplyr::select(-.estimator) %>%
+  gt() %>% 
+  fmt_number(columns = 2, decimals = 4)
+```
+]
+---
+class: middle
+
+### Aplicação nos dados não especificados
+
+```{r,echo=TRUE}
+model <- final_xgb %>% fit(data)
+
+saveRDS(model,"modelo_xgb.rds")
+
+dados_nespecificado <- readRDS("dados_nespecificado.rds")
+
+pred <- predict(model,dados_nespecificado)
+
+dados_nespecificado$classi_fin_pred <- pred$.pred_class
+
+table(dados_nespecificado$classi_fin_pred)
+```
+
+---
+class: middle
+
+### New Treshold
+
+```{r,echo=TRUE}
+library(probably)
+
+thresholds <- preds %>%
+  threshold_perf(classi_fin, `.pred_covid-19`, thresholds = seq(0, 1, by = 0.0025))
+
+best_thresh <- thresholds %>%
+  filter(.metric == "j_index") %>%
+  filter(.estimate == max(.estimate)) %>%
+  pull(.threshold) %>%
+  max()
+
+classes <- levels(preds$.pred_class)
+preds_new <- preds %>%
+  mutate(.new_pred_class = as.factor(ifelse(`.pred_covid-19` >= best_thresh,classes[1],classes[2]),
+                                  levels = c("covid-19", "não-covid")))
+
+
+final_fit$.predictions[[1]]$`.new_pred_class` = preds_new$.new_pred_class
+```
+
+---
+class:middle
+
+### Nova matriz de confusão
+
+```{r}
+conf_mat(
+  data = final_fit$.predictions[[1]],
+  truth = classi_fin,
+  estimate = .new_pred_class
+) %>%
+  autoplot(type = "heatmap")
+
+```
+
+
+---
+class:middle
+
+####  Comparação dos dois
+
+```{r}
+# Comparing models -------
+
+summary(conf_mat(preds, classi_fin, .pred_class)) %>%
+  dplyr::select(-.estimator) %>%
+  rename(old_threshold = .estimate) %>%
+  bind_cols(.,
+            summary(conf_mat(preds_new, classi_fin, .new_pred_class)) %>%
+              dplyr::select(.estimate) %>%
+              rename(new_threshold = .estimate)) %>%
+  gt() %>%
+  fmt_number(columns = c(2, 3),
+             decimals = 4)
+```
+
+
+---
+class: inverse, middle
+
+.center[
+## <br>Obrigado!
+]
+
+.pull-left[
+```{r echo=FALSE, fig.align='center', fig.cap='Foto: OOBr no Instituto Butantan.'}
+knitr::include_graphics("img/butantan.png")
+```
+]
+
+.pull-right[
+<br><br>OOBr na web:
+
+`r fontawesome::fa("envelope", fill = "white")` <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
+
+`r fontawesome::fa("twitter", fill = "white")` [@observatorioobr](https://twitter.com/observatorioobr)
+
+`r fontawesome::fa("instagram", fill = "white")` [@observatorioobr](https://instagram/observatorioobr) 
+]
