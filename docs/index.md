@@ -1,7 +1,20 @@
 ---
 title: Workshop Ciência de Dados
 author: Observatório Obstétrico Brasileiro
-description: Material dos minicursos do workshop
+description: Materiais apresentados no Workshop Ciência de Dados.
 ---
 
-[Web Scraping](http://ufes.br){:target="_blank"}
+## Materiais
+
+- [Introdução à Machine Learning](web_scraping.html){:target="_blank"}
+
+- [Visualização de Dados](slide.html){:target="_blank"}
+
+- [Web Scraping](web_scraping.html){:target="_blank"}
+
+- [Introdução ao Shiny](shiny.html){:target="_blank"}
+
+- [Python em R](pyr.html){:target="_blank"}
+
+
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> <script> var x = document.getElementsByClassName("site-footer-credits"); setTimeout(() => { x[0].remove(); }, 10); </script>
