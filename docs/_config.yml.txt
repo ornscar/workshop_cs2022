@@ -1,0 +1,5 @@
+theme: "jekyll-theme-flatly"
+title: "Workshop Ciência de Dados"
+subtitle: "Observatório Obstétrico Brasileiro"
+github:
+  is_project_page: false
