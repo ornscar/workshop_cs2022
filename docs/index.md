@@ -6,7 +6,7 @@ description: Materiais apresentados no Workshop Ciência de Dados.
 
 ## Materiais
 
-- [Introdução à Machine Learning](web_scraping.html){:target="_blank"}
+- [Introdução à Machine Learning](web_scraping/web_scraping.html){:target="_blank"}
 
 - [Visualização de Dados](slide.html){:target="_blank"}
 
