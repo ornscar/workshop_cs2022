@@ -2,6 +2,7 @@
 title: Workshop Ciência de Dados
 author: OOBr
 ---
+
 <p align="center">
   <img src="/docs/logo.png" width="400" title="hover text">
 </p>
