@@ -1,0 +1,12 @@
+.codigo {
+  font-family: "Source Code Pro";
+  color: #0A1E3C;
+  font-size: 0.9em;
+}
+
+.remark-code, .remark-inline-code { 
+  font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+  font-size: 75%;
+  
+}
+                                  
