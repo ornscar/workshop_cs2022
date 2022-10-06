@@ -4,4 +4,4 @@ author: Observatório Obstétrico Brasileiro
 description: Material dos minicursos do workshop
 ---
 
-[Web Scraping](){:target="_blank"}
+[Web Scraping](www.ufes.br){:target="_blank"}
