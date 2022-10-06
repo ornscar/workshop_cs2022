@@ -1,6 +1,6 @@
 ---
 title: Workshop Ciência de Dados
-author: Observatório Obstétrico Brasileiro
+author: OOBr
 ---
 
 ## Sobre
