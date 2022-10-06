@@ -16,9 +16,6 @@ description: Materiais apresentados no Workshop Ciência de Dados.
 
 - [Python em R](pyr.html){:target="_blank"}
 
-
-<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> <script> var x = document.getElementsByClassName("site-footer-credits"); setTimeout(() => { x[0].remove(); }, 10); </script>
-
 ## OOBr na web
 
 
@@ -29,3 +26,5 @@ description: Materiais apresentados no Workshop Ciência de Dados.
 `r fontawesome::fa("instagram", fill = "white")` [@observatorioobr](https://instagram/observatorioobr) 
 
 `r fontawesome::fa("envelope", fill = "white")` <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
+
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> <script> var x = document.getElementsByClassName("site-footer-credits"); setTimeout(() => { x[0].remove(); }, 10); </script>
