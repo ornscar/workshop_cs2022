@@ -1,0 +1,5 @@
+theme: "jekyll-theme-cayman"
+title: "Workshop Ciência de Dados"
+description: Repositório com o material do workshop.
+github:
+  is_project_page: false
