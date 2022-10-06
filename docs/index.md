@@ -9,7 +9,7 @@ author: OOBr
 
 
 ## Sobre
-O Observatório Obstétrico Brasileiro promoveu o Workshop Ciência de Dados em parceria com a Constat, empresa júnior de Estatística da Universidade Federal do Espírito Santo (UFES) entre os dias 19 a 23 de setembro de 2022. Foram 5 minicursos voltados exclusivamente para a Ciência de Dados, visando atingir profissionais e alunos da área da Estatística, Computação e Engenharia e entusiastas da área. As aulas de Introdução à Machine Learning, Visualização de Dados, Web Scraping, Introdução ao Shiny e Python em R aconteceram no auditório do Centro de Ciências Exatas da Universidade Federal do Espírito Santo (CCE-UFES), mas também puderam ser acompanhadas no [canal do OOBr no YouTube](https://www.youtube.com/channel/UCp4k0g_6yP-S8G2DU6_lSeQ) nos mesmos dias e horários.
+O Observatório Obstétrico Brasileiro promoveu o Workshop Ciência de Dados em parceria com a Constat, empresa júnior de Estatística da Universidade Federal do Espírito Santo (UFES), nos dias 19 a 23 de setembro de 2022. Foram 5 minicursos voltados exclusivamente para a Ciência de Dados, visando atingir profissionais e alunos da área da Estatística, Computação e Engenharia e entusiastas da área. As aulas de Introdução à Machine Learning, Visualização de Dados, Web Scraping, Introdução ao Shiny e Python em R aconteceram no auditório do Centro de Ciências Exatas da Universidade Federal do Espírito Santo (CCE-UFES), mas também puderam ser acompanhadas no [canal do OOBr no YouTube](https://www.youtube.com/channel/UCp4k0g_6yP-S8G2DU6_lSeQ) nos mesmos dias e horários.
 
 ## Materiais
 
