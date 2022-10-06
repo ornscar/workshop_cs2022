@@ -8,15 +8,15 @@ O Observatório Obstétrico Brasileiro promoveu o Workshop Ciência de Dados em 
 
 ## Materiais
 
-- [Introdução à Machine Learning](web_scraping/web_scraping.html){:target="_blank"}
+- [Introdução à Machine Learning](){:target="_blank"}
 
-- [Visualização de Dados](slide.html){:target="_blank"}
+- [Visualização de Dados](visualizacao_dados/slide.html){:target="_blank"}
 
-- [Web Scraping](web_scraping.html){:target="_blank"}
+- [Web Scraping](web_scraping/web_scraping.html){:target="_blank"}
 
-- [Introdução ao Shiny](shiny.html){:target="_blank"}
+- [Introdução ao Shiny](){:target="_blank"}
 
-- [Python em R](pyr.html){:target="_blank"}
+- [Python em R](python_r/pyr.html){:target="_blank"}
 
 ## OOBr na web
 
