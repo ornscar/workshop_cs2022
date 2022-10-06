@@ -4,6 +4,9 @@ author: Observatório Obstétrico Brasileiro
 description: Materiais apresentados no Workshop Ciência de Dados.
 ---
 
+## Sobre
+- Leia em: [https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/](https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/)
+
 ## Materiais
 
 - [Introdução à Machine Learning](web_scraping/web_scraping.html){:target="_blank"}
