@@ -19,12 +19,9 @@ description: Materiais apresentados no Workshop Ciência de Dados.
 ## OOBr na web
 
 
-`r fontawesome::fa("globe", fill = "white")` [https://observatorioobstetricobr.org](https://observatorioobstetricobr.org)
-
-`r fontawesome::fa("twitter", fill = "white")` [@observatorioobr](https://twitter.com/observatorioobr)
-
-`r fontawesome::fa("instagram", fill = "white")` [@observatorioobr](https://instagram/observatorioobr) 
-
-`r fontawesome::fa("envelope", fill = "white")` <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
+- Site: [https://observatorioobstetricobr.org](https://observatorioobstetricobr.org)
+- E-mail: <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
+- Twitter: [@observatorioobr](https://twitter.com/observatorioobr)
+- Instagram: [@observatorioobr](https://instagram/observatorioobr) 
 
 <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> <script> var x = document.getElementsByClassName("site-footer-credits"); setTimeout(() => { x[0].remove(); }, 10); </script>
