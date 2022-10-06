@@ -5,7 +5,7 @@ description: Materiais apresentados no Workshop Ciência de Dados.
 ---
 
 ## Sobre
-- Leia em: [https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/](https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/)
+- Leia em: [https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/.](https://observatorioobstetricobr.org/publicacoes/oobr-realiza-workshop-de-ciencia-de-dados-em-parceria-com-a-constat/)
 
 ## Materiais
 
