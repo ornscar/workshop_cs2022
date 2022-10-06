@@ -1,7 +1,6 @@
 ---
 title: Workshop Ciência de Dados
 author: Observatório Obstétrico Brasileiro
-description: Materiais apresentados no Workshop Ciência de Dados.
 ---
 
 ## Sobre
