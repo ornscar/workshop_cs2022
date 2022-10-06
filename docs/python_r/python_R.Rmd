@@ -1,0 +1,85 @@
+---
+title: "Python em R"
+author: "José Carlos Soares Junior"
+date: "2022"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A síndrome respiratória aguda grave (SRAG), é uma doença respiratória contagiosa que afeta os pulmões e pode levar a quadros graves de pneumonia. A SRAG pode ser causada por bactérias ou vírus, dois exemplos deste último são a Influenza (H1N1) e o coronavírus (Sars-CoV). No Brasil, quem desenvolve a vigilância da Síndrome Respiratória Aguda Grave é Ministério da Saúde (MS) por meio do Sistema de Informação da Vigilância Epidemiológica da Gripe (SIVEP-Gripe).
+
+Os dados da vigilância de SRAG, embora registrados desde 2009, vinham sendo pouco usados com objetivo de análises e melhora da saúde pública. Durante a pandemia, com o objetivo disponibilizar plataformas interativas de monitoramento e análises de dados públicos cientificamente embasadas e disseminar informações de qualidade e relevantes acerca da área da saúde materno-infantil, foi criado o projeto Observatório Obstétrico Brasileiro (OOBr).
+
+Nesta breve análise, estarei utilizando os dados de crianças de até 28 dias de vida e que foram internadas confirmadas com SRAG, sendo registros de casos dos anos de 2017 à 2022 com a última atualização do dia 28 de Janeiro de 2022. Estes dados foram utilizados internamente pela equipe do OOBr para análises com cunho científico, e que originalmente foram obtidos a partir do SIVEP-Gripe.
+
+Meu objetivo é ter uma breve ideia do número de casos de SRAG e de óbitos durante esses anos.
+
+```{r, warning = FALSE, message = FALSE}
+# Carregando o reticulate
+library("reticulate")
+```
+
+```{python, warning = FALSE, message = FALSE}
+# Carregando os dados
+import pandas as pd
+df = pd.read_csv("dados28dias.csv", encoding = "ISO-8859-1")
+```
+
+```{r, warning = FALSE, message = FALSE}
+# Variáveis da base de dados
+names(py$df) 
+```
+
+```{python, warning = FALSE, message = FALSE}
+# Selecionando as variaveis que serao usadas
+df1 = df.filter(["ano", "HOSPITAL", "evolucao"]) 
+
+# Considerando apenas casos internados
+df1 = df1.query("HOSPITAL == 1") 
+```
+
+```{r, warning = FALSE, message = FALSE}
+# summarização para a construção do grafico 
+casos_sumarizado <- as.data.frame(table(py$df1["ano"]))
+colnames(casos_sumarizado) <- c("ano","n")
+```
+
+```{python, fig.align = "center", warning = FALSE, message = FALSE, results='hide'}
+# Numero de casos totais por ano (Usando seaborn)
+import seaborn as sb
+chart = sb.barplot(r.casos_sumarizado["ano"],  r.casos_sumarizado["n"])
+chart.bar_label(chart.containers[0])
+```
+
+**Figura 1**: Número de casos totais de crianças de ate 28 dias de vida com SRAG entre 2017 e 2022.
+
+Na *Figura 1* podemos notar um aumento expressivo de casos durante os anos de 2020 e 2021, exatamente no período de alta da pandemia da COVID-19. Podemos notar que em 2022 temos poucos casos, mas isso de deve pelo fato de que os dados considerados são de uma atualização do mês de Janeiro desse ano.
+
+```{python, warning = FALSE, message = FALSE}
+# Considerando apenas casos que foram a obito
+df1obitos = df1.query("evolucao == 'Obito'") 
+```
+
+```{r, warning = FALSE, message = FALSE}
+# summarização para a construção do grafico (obitos)
+casos_sumarizado <- as.data.frame(table(py$df1obitos["ano"]))
+colnames(casos_sumarizado) <- c("ano","n")
+```
+
+```{python, fig.align = "center", warning = FALSE, message = FALSE, results='hide'}
+# Numero de obitos totais por ano 
+chart = sb.barplot(r.casos_sumarizado["ano"], r.casos_sumarizado["n"])
+chart.bar_label(chart.containers[0])
+```
+
+**Figura 2**: Número de obitos totais de crianças de ate 28 dias de vida com SRAG entre 2017 e 2022.
+
+Podemos notar pela *Figura 2* que o número de óbitos dessa população também foi expressivo nos anos de 2020 e 2021 se comparado com os anos anteriores.
+
+Com ambas as figuras conseguimos 'insights' sobre o comportamento de SRAG na população de crianças de até 28 dias de vida, onde esses gráficos sugerem um aumento de casos e de óbitos nos anos de 2020 e 2021, cuja causa possa ser em decorrência da pandemia de COVID-19 nesse período.
