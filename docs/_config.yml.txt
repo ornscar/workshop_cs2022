@@ -1,0 +1,5 @@
+theme: "jekyll-theme-cayman"
+title: "Workshop Ciência de Dados"
+descripition: "<img src=logo.png width = '30%'>"
+github:
+  is_project_page: false
