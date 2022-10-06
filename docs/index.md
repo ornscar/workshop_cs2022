@@ -26,10 +26,10 @@ O Observatório Obstétrico Brasileiro promoveu o Workshop Ciência de Dados em 
 ## OOBr na web
 
 
-- Site: [https://observatorioobstetricobr.org](https://observatorioobstetricobr.org)
-- E-mail: <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
-- Twitter: [@observatorioobr](https://twitter.com/observatorioobr)
-- Instagram: [@observatorioobr](https://instagram/observatorioobr) 
-- YouTube: [Observatório Obstétrico Brasileiro](https://www.youtube.com/channel/UCp4k0g_6yP-S8G2DU6_lSeQ)
+Site: [https://observatorioobstetricobr.org](https://observatorioobstetricobr.org)
+E-mail: <a href="mailto:observatorioobstetricobr@gmail.com">observatorioobstetricobr@gmail.com</a>
+Twitter: [@observatorioobr](https://twitter.com/observatorioobr)
+Instagram: [@observatorioobr](https://instagram/observatorioobr) 
+YouTube: [Observatório Obstétrico Brasileiro](https://www.youtube.com/channel/UCp4k0g_6yP-S8G2DU6_lSeQ)
 
 <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script> <script> var x = document.getElementsByClassName("site-footer-credits"); setTimeout(() => { x[0].remove(); }, 10); </script>
