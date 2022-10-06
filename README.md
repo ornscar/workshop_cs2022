@@ -1,7 +1,7 @@
 # Workshop Ciência de Dados 2022
 
 <p align="center">
-  <img src="docs/logo.png" width="350" title="hover text">
+  <img src="/docs/logo.png" width="350" title="hover text">
 </p>
 
 ### Sobre
