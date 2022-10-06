@@ -1,0 +1,13 @@
+name: navbar
+title: navbar
+username:
+account: rafaelsherzog
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7084383
+bundleId: 6325907
+url: https://rafaelsherzog.shinyapps.io/navbar/
+when: 1663808010.44592
+lastSyncTime: 1663808010.44593
+asMultiple: FALSE
+asStatic: FALSE

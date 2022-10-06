@@ -1,0 +1,13 @@
+name: shinydashboard
+title: shinydashboard
+username:
+account: rafasantanah
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7083166
+bundleId: 6328447
+url: https://rafasantanah.shinyapps.io/shinydashboard/
+when: 1663868214.11777
+lastSyncTime: 1663868214.11778
+asMultiple: FALSE
+asStatic: FALSE
