@@ -1,6 +1,6 @@
 theme: "jekyll-theme-cayman"
 title: "Workshop Ciência de Dados"
-subtitle: "<img src=img/logo.png width = '30%'>"
-description: Materiais apresentados no Workshop Ciência de Dados.
+subtitle: "Observatório Obstétrico Brasileiro"
+description: "Materiais"
 github:
   is_project_page: false
