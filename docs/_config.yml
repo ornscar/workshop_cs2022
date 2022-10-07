@@ -1,5 +1,5 @@
 theme: "jekyll-theme-minimal"
 title: "Workshop Ciência de Dados"
-description: Observatório Obstétrico Brasileiro
+description: "<img src=/docs/logo.png width = '30%'>"
 github:
   is_project_page: false
