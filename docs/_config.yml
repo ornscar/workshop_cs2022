@@ -1,5 +1,11 @@
 theme: "jekyll-theme-minimal"
 title: "Workshop Ciência de Dados"
 description: Observatório Obstétrico Brasileiro
+avatar: /docs/logo.png
+footer-links:
+  email: observatorioobstetricobr@gmail.com
+  github: observatorioobstetrico
+  instagram: observatorioobr
+  twitter: observatorioobr
 github:
   is_project_page: false
