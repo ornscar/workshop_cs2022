@@ -1,5 +1,6 @@
 theme: jekyll-theme-minimal
 logo: logo.png
+name: ""
 title: null
 github:
   is_project_page: false
