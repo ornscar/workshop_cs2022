@@ -5,7 +5,7 @@ Nos dias 19 a 23 de setembro de 2022, o Observatório Obstétrico Brasileiro pro
 ## Materiais
 <hr>
 
-- [Introdução à Machine Learning](){:target="_blank"}
+- [Introdução à Machine Learning](introducao_ml/machine_learning.html){:target="_blank"}
 
 - [Visualização de Dados](visualizacao_dados/slide.html){:target="_blank"}
 
