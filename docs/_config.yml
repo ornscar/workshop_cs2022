@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 logo: logo.png
 title: Workshop Ciência de Dados
+show_downloads: true
+link_material: 'https://github.com/curso-r/main-web-scraping/raw/master/material_do_curso.zip'
