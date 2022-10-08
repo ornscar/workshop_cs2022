@@ -1,3 +1,5 @@
 theme: jekyll-theme-minimal
 logo: logo.png
 title: Workshop Ciência de Dados
+github:
+  is_project_page: false
